@@ -63,7 +63,6 @@ pip install pillow
 2. Ensure the following files are present in the project directory:
    - `main.py`
    - `icon.png`
-   - `sound.wav`
 3. Open a terminal or command prompt in the project folder.
 4. Run the application:
 
@@ -122,17 +121,3 @@ This project helps in understanding:
 ## Conclusion
 
 The Alarm Clock project is a beginner-friendly Python application that demonstrates the fundamentals of GUI programming using Tkinter. It combines threading and time management concepts to create a practical and useful desktop utility.
-
----
-
-## Author
-
-**Your Name**
-
-Micro Project – Alarm Clock Using Python Tkinter
-
----
-
-## License
-
-This project is developed for educational and academic purposes only.
