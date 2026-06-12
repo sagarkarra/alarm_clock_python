@@ -1,14 +1,30 @@
 from tkinter.ttk import *
 from tkinter import *
-
+import datetime
+import time
+import winsound
+from threading import *
 from PIL import ImageTk,Image
 bg_color='#ffffff'
 co1="#566FC6"
-
 root=Tk()
 root.title("Alarm clock")
 root.geometry("350x150")
 root.configure(bg=bg_color)
+def Threading():
+    t1=Thread(target=alarm)
+    t1.start()
+
+def alarm():
+    while True:
+        set_alarm_time = f"{c_h.get()}:{c_m.get()}:{c_sec.get()}"
+        time.sleep(1)
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        print(current_time,set_alarm_time)
+        if current_time == set_alarm_time:
+            print("Time to Wake up")
+            winsound.PlaySound("sound.wav",winsound.SND_ASYNC)
+            break
 
 frame_line=Frame(root,width=400,height=5,bg=co1)
 frame_line.grid(row=0,column=0)
@@ -29,7 +45,7 @@ name.place(x=125,y=10)
 hour=Label(root,text="hour",height=1,font=("Ivy 10 bold"),bg=bg_color,fg=co1)
 hour.place(x=127,y=40)
 c_h=Combobox(root,width=2,font=("Arial 15"))
-c_h["values"]=["00","01","02","03","04","05","06","07","08","09","10","11","12"]
+c_h["values"]=["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]
 c_h.current(0) 
 c_h.place(x=130,y=58)
 
@@ -51,11 +67,13 @@ period=Label(root,text="period",height=1,font=("Ivy 10 bold"),bg=bg_color,fg=co1
 period.place(x=277,y=40)
 c_period=Combobox(root,width=3,font=("Arial 15"))
 c_period["values"]=("AM","PM")
+if c_period==c_h:
+    c_period=c_h+12
 c_period.current(0) 
 c_period.place(x=280,y=58)
 
 selected=IntVar()
 
-rad1=Radiobutton(root,font=("Arial 10 bold"),text="Activate",bg=bg_color)
+rad1=Button(root,font=("Arial 10 bold"),text="Set Alarm",bg=bg_color,command=Threading)
 rad1.place(x=125,y=95)
 root.mainloop()
