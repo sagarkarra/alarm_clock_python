@@ -38,9 +38,7 @@ Alarm-Clock/
 │
 ├── main.py          # Main application file
 ├── icon.png         # Application icon
-├── sound.wav        # Alarm sound file
 └── README.md        # Project documentation
-```
 
 ---
 
